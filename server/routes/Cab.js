@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const addCab = require("./Cab/addCab.js");
+const bookCab = require("./Cab/bookCab.js");
+const findCab = require("./Cab/findCab.js");
 const fetchUser = require("../Middleware/fetchUser.js");
+const completingARide = require("./Cab/completingARide.js");
 const jwtSecret = "secret";
 
 //@route POST api/cab/addcab
@@ -19,4 +22,8 @@ router.post("/bookcab", fetchUser, bookCab);
 //@access public
 router.post("/findcab", fetchUser, findCab);
 
+//@route POST api/cab/completingARide
+//@desc Completing a ride
+//@access Driver
+router.put("/completingaride", fetchUser, completingARide);
 module.exports = router;

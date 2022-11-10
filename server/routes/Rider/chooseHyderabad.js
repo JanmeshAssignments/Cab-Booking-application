@@ -1,7 +1,7 @@
 const User = require('../../Models/User.js');
 const Ride = require('../../Models/Ride.js');
 
-const NoOfTimesUserChoseHyderabadAsDropPoint = async (req, res) => {
+const chooseHyderabad = async (req, res) => {
     try {
         let user = await User.findById(req.user.id
         );
@@ -14,7 +14,7 @@ const NoOfTimesUserChoseHyderabadAsDropPoint = async (req, res) => {
         let rides = await Ride.find({ rider: req.user.id });
         let count = 0;
         for (let i = 0; i < rides.length; i++) {
-            if (rides[i].to_location == "Hyderabad") {
+            if (rides[i].to_city.toLowerCase() == "hyderabad") {
                 count++;
             }
         }
@@ -26,4 +26,4 @@ const NoOfTimesUserChoseHyderabadAsDropPoint = async (req, res) => {
     }
 }
 
-module.exports = NoOfTimesUserChoseHyderabadAsDropPoint;
+module.exports = chooseHyderabad;

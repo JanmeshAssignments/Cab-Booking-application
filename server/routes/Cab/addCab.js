@@ -28,3 +28,4 @@ const addCab = async (req, res) => {
     }
 
 }
+module.exports = addCab;

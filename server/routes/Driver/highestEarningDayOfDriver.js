@@ -35,7 +35,8 @@ const totalSuccessFullRidesCompletedInLastWeek = async (req, res) => {
                 maxDate = key;
             }
         }
-        res.json({ maxDate: maxDate.getDay(), maxFare: max });
+        const days = [`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`];
+        res.json({ maxDate: days[maxDate.getDay()], maxFare: max });
 
     }
     catch (err) {

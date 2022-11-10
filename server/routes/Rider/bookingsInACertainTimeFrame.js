@@ -11,10 +11,10 @@ const totalSuccessFullRidesCompletedInLastWeek = async (req, res) => {
         if (user.isDriver) {
             return res.status(400).json({ msg: "User is a driver" });
         }
-        let rides = await Ride.find({ driver: req.user.id });
+        let rides = await Ride.find({ rider: req.user.id });
         let totalRides = 0;
         for (let i = 0; i < rides.length; i++) {
-            if (rides[i].status == "completed" && rides[i].date >= startDate && rides[i].date <= endDate) {
+            if (rides[i].status == "completed" && rides[i].date.toISOString() >= startDate && rides[i].date.toISOString() <= endDate) {
                 totalRides++;
             }
         }

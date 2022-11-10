@@ -1,7 +1,7 @@
 const User = require('../../Models/User');
 const Ride = require('../../Models/Ride');
 
-const totalSuccessFullRidesCompletedInLastWeek = async (req, res) => {
+const totalEarningMadeinTheParticularDayRange = async (req, res) => {
     const { startDate, endDate } = req.body;
     try {
         let user = await User.findById(req.user.id);
@@ -13,8 +13,9 @@ const totalSuccessFullRidesCompletedInLastWeek = async (req, res) => {
         }
         let rides = await Ride.find({ driver: req.user.id });
         let toalFare = 0;
+        console.log(rides)
         for (let i = 0; i < rides.length; i++) {
-            if (rides[i].status == "completed" && rides[i].date >= startDate && rides[i].date <= endDate) {
+            if (rides[i].status == "completed" && rides[i].date.toISOString() >= startDate && rides[i].date.toISOString() <= endDate) {
                 toalFare += rides[i].fare;
             }
         }
@@ -26,4 +27,4 @@ const totalSuccessFullRidesCompletedInLastWeek = async (req, res) => {
     }
 }
 
-module.exports = totalSuccessFullRidesCompletedInLastWeek;
+module.exports = totalEarningMadeinTheParticularDayRange;

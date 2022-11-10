@@ -10,10 +10,30 @@ const RideSchema = new mongoose.Schema({
         ref: 'user'
     },
     from_location: {
+        start_lat: {
+            type: Number,
+            required: true
+        },
+        start_long: {
+            type: Number,
+            required: true
+        }
+    },
+    to_location: {
+        end_lat: {
+            type: Number,
+            required: true
+        },
+        end_long: {
+            type: Number,
+            required: true
+        }
+    },
+    from_city: {
         type: String,
         required: true
     },
-    to_location: {
+    to_city: {
         type: String,
         required: true
     },

@@ -5,29 +5,28 @@ const jwt = require("jsonwebtoken");
 router = express.Router();
 const jwtSecret = "secret";
 const addRider = async (req, res) => {
-    const { name, email, password, username, phone, age, vehicle } = req.body;
+    const { name, email, password, username, phone, age } = req.body;
     try {
         let rider = await User.findOne({ email, username, phone });
         if (rider) {
             return res.status(400).json({ msg: "User already exists" });
         }
-        rider = new User({
+        user = new User({
             name,
             email,
             password,
             username,
             phone,
             age,
-            vehicle,
             isDriver: false
 
         });
         const salt = await bcrypt.genSalt(10);
-        rider.password = await bcrypt.hash(password, salt);
-        await rider.save();
+        user.password = await bcrypt.hash(password, salt);
+        await user.save();
         const payload = {
-            rider: {
-                id: rider.id,
+            user: {
+                id: user.id,
             },
         };
         jwt.sign(

@@ -32,17 +32,10 @@ const Userschema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    cabId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cab'
-    },
     isDriver: {
         type: Boolean,
         required: true
-    }, vehicleType: {
-        type: String,
-        required: false
-    },
+    }
 })
 
 module.exports = User = mongoose.model('user', Userschema);
