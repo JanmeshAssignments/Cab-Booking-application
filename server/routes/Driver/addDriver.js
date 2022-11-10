@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = "secret";
 
 const addDriver = async (req, res) => {
-    const { name, email, password, username, phone, age, vehicleType } = req.body;
+    const { name, email, password, username, phone, age } = req.body;
     try {
         let user = await User.findOne({ email, username, phone });
         if (user) {
@@ -18,7 +18,6 @@ const addDriver = async (req, res) => {
             username,
             phone,
             age,
-            vehicleType,
             isDriver: true
 
         });

@@ -2,7 +2,9 @@ const User = require('../../Models/User.js');
 const Ride = require('../../Models/Ride.js');
 
 const totalSuccessFullRidesCompletedInLastWeek = async (req, res) => {
-    const { userId } = req.body;
+    const user = req.user;
+    const userId = user._id.toString();
+    console.log(userId);
     try {
         let user = await User.findById(userId);
         if (!user) {
