@@ -8,7 +8,7 @@ const totalSuccessFullRidesCompletedInLastWeek = require('./Driver/totalSuccessF
 router = express.Router();
 
 
-//@route POST api/rider
+//@route POST api/driver
 //@data {name, email, password, username, phone, age}
 //@desc Register rider
 //@access Public
