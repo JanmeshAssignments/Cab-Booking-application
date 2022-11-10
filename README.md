@@ -2,7 +2,7 @@
 
 ## APIs
 ### 
- `# "auth-token" Header is always present in every api end-point except 'api/rider'  and 'api/driver'. and auth-token is generated in the above endpoints mentioned`
+ `# "auth-token" Header is always to be present in every api end-point except 'api/rider'  and 'api/driver'. and auth-token is generated in the above endpoints mentioned`
 | API | METHOD |   Descriptoni | Data | Access|
 | ----------- | ----------- | ---- | ---- | --- |
 | `api/rider ` | POST | register rider |  ``` {   name , email, password, username, phone, age}``` |  Public|
